@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter,
   Routes,
@@ -19,6 +20,8 @@ import Dashboard from "./assets/pages/Dashboard";
 import Tasks from "./assets/pages/Tasks";
 import AddTask from "./assets/pages/AddTask";
 import EditTask from "./assets/pages/EditTask";
+import Calendar from "./assets/pages/Calendar";
+import Activity from "./assets/pages/Activity";
 
 const AppLayout = () => {
   return (
@@ -50,7 +53,9 @@ const HomeRedirect = () => {
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>       <Toaster position="top-right" />
+      <AuthProvider>
+        <Toaster position="top-right" />
+
         <Routes>
           <Route path="/" element={<HomeRedirect />} />
 
@@ -63,6 +68,8 @@ function App() {
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/add-task" element={<AddTask />} />
               <Route path="/edit-task/:id" element={<EditTask />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/activity" element={<Activity />} />
             </Route>
           </Route>
 

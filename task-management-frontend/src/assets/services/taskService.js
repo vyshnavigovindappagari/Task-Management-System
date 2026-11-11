@@ -14,6 +14,9 @@ const taskService = {
   updateTask: async (id, taskData) => (await api.put(`/api/tasks/${id}`, taskData)).data,
   completeTask: async (id) => (await api.patch(`/api/tasks/${id}/complete`)).data,
   deleteTask: async (id) => (await api.delete(`/api/tasks/${id}`)).data,
+  duplicateTask: async (id) =>
+    (await api.post(`/api/tasks/${id}/duplicate`)).data,
+
 };
 
 export default taskService;

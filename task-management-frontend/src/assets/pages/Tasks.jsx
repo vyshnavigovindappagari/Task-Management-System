@@ -61,6 +61,24 @@ const Tasks = () => {
     } catch { toast.error("Unable to update task"); }
   };
 
+const duplicateTask = async (id) => {
+  try {
+    const newTask = await taskService.duplicateTask(id);
+
+    toast.success("Task duplicated successfully!");
+
+    setTasks((current) => [newTask, ...current]);
+    setPage(1);
+
+  } catch (error) {
+    console.error("Duplicate task error:", error);
+    toast.error(
+      error.response?.data?.error || "Unable to duplicate task"
+    );
+  }
+};
+
+
   return (
     <div className="page-content">
       <div className="page-heading">
@@ -86,7 +104,7 @@ const Tasks = () => {
         ) : (
           <>
             <p className="results-count">Showing {visibleTasks.length} of {tasks.length} tasks</p>
-            <div className="task-grid">{visibleTasks.map((task) => <TaskCard key={task.id} task={task} onDelete={deleteTask} onComplete={completeTask} />)}</div>
+            <div className="task-grid">{visibleTasks.map((task) => <TaskCard key={task.id} task={task} onDelete={deleteTask} onComplete={completeTask}  onDuplicate={duplicateTask}/>)}</div>
             {pageCount > 1 && <div className="pagination">
               <button disabled={page === 1} onClick={() => setPage((p) => p - 1)}>Previous</button>
               <span>Page {page} of {pageCount}</span>

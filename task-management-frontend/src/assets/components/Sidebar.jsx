@@ -5,6 +5,8 @@ import {
   ListTodo,
   PlusCircle,
   ClipboardCheck,
+  CalendarDays,
+  Activity,
 } from "lucide-react";
 
 const Sidebar = () => {
@@ -40,6 +42,20 @@ const Sidebar = () => {
           }>
             <PlusCircle size={19} />
             <span>Add New Task</span>
+          </NavLink>
+
+          <NavLink to="/calendar" className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }>
+            <CalendarDays size={19} />
+            <span>Calendar</span>
+          </NavLink>
+
+          <NavLink to="/activity" className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }>
+            <Activity size={19} />
+            <span>Activity History</span>
           </NavLink>
         </nav>
       </div>
